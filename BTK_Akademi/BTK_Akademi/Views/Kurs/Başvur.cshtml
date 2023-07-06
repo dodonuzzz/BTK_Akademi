@@ -1,0 +1,88 @@
+﻿@model BTK_Akademi.Models.CandidateModel
+@{
+    ViewBag.Title = "Başvur";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .field-validation-error {
+        color: red;
+    }
+</style>
+
+
+<div class="display-6">
+    Başvur
+</div>
+
+<form method="post" action="/Kurs/Başvur">
+    <div class="text-danger">@Html.ValidationSummary()</div>
+    @*<div class="text-danger" asp-validation-summary="All"></div>*@
+
+    <div class="form-group my-2">
+        <label>Email</label>
+        <input name="Email" class="form-control" />        
+    </div>
+
+
+
+    <div class="form-group my-2">
+        <label>Ad</label>
+        <input name="Ad" class="form-control" />
+    </div>
+
+    <div class="form-group my-2">
+        <label>Soyad</label>
+        <input name="Soyad" class="form-control" />
+    </div>
+
+    <div class="form-group my-2">
+        <label>Yaş</label>
+        <select name="Yas" class="form-control">
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+        </select>
+    </div>
+
+    <fieldset>
+        <legend>Bir Kurs Seçin</legend>
+        <p>
+            <input id="mvc" type="radio" name="SecilenKurs" value="ASP.NET MVC" checked />
+            <label>ASP.NET MVC</label>
+        </p>
+
+        <p>
+            <input id="python" type="radio" name="SecilenKurs" value="Python ve Yapay Zeka" />
+            <label>Python ve Yapay Zeka</label>
+        </p>
+
+        <p>
+            <input id="sql" type="radio" name="SecilenKurs" value="SQL Veritabanı Yönetimi" />
+            <label>SQL Veritabanı Yönetimi</label>
+        </p>
+
+        <p>
+            <input id="flutter" type="radio" name="SecilenKurs" value="Flutter ile Mobil Uygulama" />
+            <label>Flutter ile Mobil Uygulama</label>
+        </p>
+
+        <p>
+            <input id="english" type="radio" name="SecilenKurs" value="Programcılar İçin İngilizce" />
+            <label>Programcılar İçin İngilizce</label>
+        </p>
+        @Html.ValidationMessageFor(model => model.SecilenKurs)
+    </fieldset>
+
+    <div>
+        <button formaction="/Kurs/Başvur" class="btn btn-success" type="submit">Başvur</button>
+        <a class="btn btn-warning" href="/">Anasayfa</a>
+    </div>
+
+</form>
+

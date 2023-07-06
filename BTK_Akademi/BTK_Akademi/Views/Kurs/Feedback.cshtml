@@ -1,0 +1,23 @@
+﻿@model BTK_Akademi.Models.CandidateModel
+@{
+    ViewBag.Title = "Feedback";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" action="/Kurs/Feedback">
+    <div>
+        <h3 class="display-4">Tebrikler ! @Model.Ad @Model.Soyad</h3>
+        <p class="lead">Başvurunuz <mark>kabul edildi.</mark></p>
+        <p class="lead">İlgi ve alakanızdan ötürü Teşekkür Ederiz.</p>
+        <hr />
+        <blockquote class="blockquote">
+            @Model.SecilenKurs Kursuna kaydoldunuz.
+        </blockquote>
+        <p class="text-muted">@Model.Muracaat Tarihinde başvuru yaptınız.</p>
+
+        <div class="btn-group">
+            <a class="btn btn-warning" href="/Kurs">Başvuranlar</a>
+            <a class="btn btn-success" href="/">Anasayfa</a>
+        </div>
+    </div>
+</form>

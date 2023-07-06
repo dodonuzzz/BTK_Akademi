@@ -1,0 +1,55 @@
+﻿@model IEnumerable<BTK_Akademi.Models.CandidateModel>
+
+@{
+    ViewBag.Title = "Kurs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h6 class="display-6">
+    Başvuranlar (@Model.Count())
+</h6>
+
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Yaş</th>
+            <th>Seçilen Kurs</th>
+            <th>Başvuru Tarihi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var candidate in Model)
+        {
+            <tr>
+                <td>@candidate.Email</td>
+                <td>@candidate.Ad</td>
+                <td>@candidate.Soyad</td>
+                <td>@candidate.Yas</td>
+                <td>@candidate.SecilenKurs</td>
+                <td>@candidate.Muracaat</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (Model.Count() > 0)
+{
+    <h6 class="display-6">Önceki Başvuranlar</h6>
+    <ul>
+        @foreach (var candidate in Model)
+        {
+            <li>@candidate.Ad @candidate.Soyad</li>
+        }
+    </ul>
+}
+
+else
+{
+    <div class="alert alert-info">
+        Herhangi bir başvuru bulunamadı. Lütfen
+        <a class="alert-link" href="/Kurs/Başvur">buraya tıklayın.</a>
+    </div>
+}
